@@ -4,13 +4,39 @@ const  loadLessons = () =>{
     .then((json) => displayLesson(json.data))
 
 };
+const removeActive =()=>{
+    const lessonButtons = document.querySelectorAll(".lesson-btn");
+    lessonButtons.forEach((btn)=>
+        btn.classList.remove("active")); 
+    };
+
+
 const loadLevelWord = (id)=>{
     
     const url = `https://openapi.programming-hero.com/api/level/${id}`;
     fetch(url)
     .then((res) => res.json())
-    .then((data)=>displayLevelWord(data.data));
+    .then((data)=>{
+        removeActive();
+        const clickBtn = document.getElementById(`level-btn-${id}`);
+        //console.log(clickBtn);
+        clickBtn.classList.add("active");
+        displayLevelWord(data.data)});
 };
+const loadWordDetail = async(id)=>{
+    const url = `https://openapi.programming-hero.com/api/word/${id}`;
+    
+    const res = await fetch(url);
+    const data = await res.json();
+    displayWordDetail(data.data)
+
+}
+const displayWordDetail =(word)=>{
+    console.log(word);
+    const detailsBox = document.getElementById("details-contenter");
+    // detailsBox.innerHTML ="i am from js"
+    document.getElementById("my_modal_5").showModal();
+}
 const displayLevelWord = (words)=>{
     const wordContainer = document.getElementById("word-container");  
     wordContainer.innerHTML = "";
@@ -29,8 +55,8 @@ const displayLevelWord = (words)=>{
     <p>Meaning /Pronounciation</p>
     <h3 class="font-bold text-xl text-gray-500">"${word.meaning? word.meaning:"not found"}/${word.pronunciation? word.pronunciation:"not found"}"</h3>
    <div class="flex justify-between mt-5 items-center">
-     <button class="bg-[#1A91FF1A] p-3  hover:bg[#1A91FF80]"><i class="fa-solid fa-circle-info"></i></button>
-    <button class="bg-[#1A91FF1A] p-3  hover:bg[#1A91FF80]"><i class="fa-solid fa-volume-high"></i></button>
+     <button onclick ="loadWordDetail(${word.id})" class="bg-[#1A91FF1A] p-3  "><i class="fa-solid fa-circle-info"></i></button>
+    <button class="bg-[#1A91FF1A] p-3 "><i class="fa-solid fa-volume-high"></i></button>
    </div>
   </div>
     
@@ -47,8 +73,9 @@ const displayLesson =(lessons)=>{
     for(let lesson of lessons){
         const btnDiv = document.createElement("div");
         btnDiv.innerHTML = `
-        <button onclick="loadLevelWord(${lesson.level_no})" 
-        class="btn btn-outline btn-primary"><i class="fa-solid fa-arrow-right-from-bracket">
+        <button id="level-btn-${lesson.level_no}"  
+        onclick="loadLevelWord(${lesson.level_no})" 
+        class="btn btn-outline btn-primary lesson-btn"><i class="fa-solid fa-arrow-right-from-bracket">
         </i>Lesson - ${lesson.level_no}
         </button>`;
         levelContainer.appendChild(btnDiv);

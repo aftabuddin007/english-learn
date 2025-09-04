@@ -13,7 +13,12 @@
     <!-- daisy cdn -->
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+<style>
+  .active{
+    background-color: #3b82f6;
+    color: white;
+  }
+</style>
 
 </head>
 <body>
@@ -82,6 +87,34 @@
  </div>
 
 </section>
+<div>
+  <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+   <div id="details-contenter">
+    <div class="">
+      <h2>Eager (<i class="fa-solid fa-microphone-lines"></i>:ইগার)</h2>
+      <h5>Meaning</h5>
+      <p>আগ্রহী, উৎসাহী</p>
+      <h4>Example</h4>
+      <p>She is eager to learn English.</p>
+      <p>সমার্থক শব্দ গুলো</p>
+      <p>avid, enthusiastic, keen, anxious</p>
+      <button>Complete Learning</button>
+    </div>
+   </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+</div>
+
+
 <script src="./script/main.js"></script>
 </body>
 </html>
