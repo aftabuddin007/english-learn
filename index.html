@@ -79,6 +79,21 @@
     <h2 class="text-4xl font-bold"><span class="text-blue-400">Let's </span> Learn Vocabularies</h2></div>
     <div id="level-container" class="flex  flex-wrap gap-5 justify-center mt-8"></div>
 </section>
+<section class="search flex justify-center items-center mt-10">
+  <div class="join">
+  <div>
+    <label class="input validator join-item">
+
+      <input id="input-search" type="search" placeholder="Enter Search Vocabulary" required />
+    </label>
+    <div class="validator-hint hidden">Enter Search Vocabulary</div>
+  </div>
+  <button id="search-btn" class="btn btn-neutral join-item">Search</button>
+</div>
+</section>
+<section class="spin flex justify-center items-center mt-6 hidden">
+  <span class="loading loading-spinner loading-xl"></span>
+</section>
 <section id="word-container" class="bg-gray-100 p-10 w-11/12 mx-auto mt-35 grid grid-cols-3 gap-5">
  <div class="bg[gray] text-center col-span-full py-10  rounded-xl" >
   <h5 class="font-bold text-[20px] mb-5">আপনি এখনো কোন Lesson Select করেন ন</h5>
@@ -87,27 +102,17 @@
  </div>
 
 </section>
+
 <div>
   <!-- Open the modal using ID.showModal() method -->
 <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
 <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
    <div id="details-contenter">
-    <div class="">
-      <h2>Eager (<i class="fa-solid fa-microphone-lines"></i>:ইগার)</h2>
-      <h5>Meaning</h5>
-      <p>আগ্রহী, উৎসাহী</p>
-      <h4>Example</h4>
-      <p>She is eager to learn English.</p>
-      <p>সমার্থক শব্দ গুলো</p>
-      <p>avid, enthusiastic, keen, anxious</p>
-      <button>Complete Learning</button>
+    
     </div>
    </div>
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
+    
       </form>
     </div>
   </div>
